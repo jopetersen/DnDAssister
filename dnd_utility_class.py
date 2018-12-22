@@ -1,22 +1,37 @@
+# the purpose of this separate doc is to introduce classes to the initial utility for the popular
+# fantasy tabletop RPG, Dungeons & Dragons (5th Edition)
+
 import random
 import math
 
-# "You have 6 Ability scores to roll for: Strength, Dexterity, Constitution, Intellect, Charisma, and Wisdom. 
-    # You can either roll 4 6-sided die and record the cumulative total of the highest 3 dice 6 times 
-        # or take the “standard set” which is 15,14,13,12,10,8. 
-    # You do not need to assign these scores yet, but you can if you want to."
-# from: https://www.instructables.com/id/DD-5E-Character-Creation/
+class Character:
+    def __init__(name, strength, dexterity, constitution, intellect, wisdom, charisma):
+        self.name = name
+        self.strength = strength
+        self.dexterity = dexterity
+        self.constitution = constitution
+        self.intellect = intellect
+        self.wisdom = wisdom
+        self.charisma = charisma
+        # will also need to add gear & HP at some point
+    #reference https://www.w3schools.com/python/python_classes.asp 
 
-num_dice = 4
-#todos: create a simple graphical user interface that has a button that's used to "generate a character with random stats"
+#create an empty character
+test_character = Character("test_name", 0, 0, 0, 0, 0, 0)
 
-#gets a number of dice to build into an array
-def dice_array_builder(num_dice):
+#setting a global variable of num_dice for a character creation so that I can use a character builder
+num_dice= 4
+
+#initializing an empty character name, but is a global variable
+character = ""
+
+def character_builder(num_dice, character):
+    character_name = str(input("What is your character's name? "))
+    # get a character's name
     character_dice_array = []
-    num_dice= 4
     dice_counter=num_dice*6
     # multiplying by 6 so that we can roll 4 dice 6 times
-    
+
     # defining the first set of arrays:
     first_character_array = []
     second_character_array = []
@@ -45,7 +60,7 @@ def dice_array_builder(num_dice):
         #sorting the array from highest to lowest
         first_character_array.sort(reverse=True)
         # determine which 3 indexes in an array are the largest, then add them
-       # first_character_sum=first_character_array[0]+first_character_array[1]+first_character_array[2]
+    # first_character_sum=first_character_array[0]+first_character_array[1]+first_character_array[2]
     while dice_counter > 16: 
         random.seed()
         second_character_array.append((math.trunc(random.random()*10)))
@@ -71,13 +86,14 @@ def dice_array_builder(num_dice):
         sixth_character_array.append((math.trunc(random.random()*10)))
         dice_counter=dice_counter-1
         sixth_character_array.sort(reverse=True)
-    #print(character_dice_array)
-    print(first_character_array)
-    print(second_character_array)
-    print(third_character_array)
-    print(forth_character_array)
-    print(fifth_character_array)
-    print(sixth_character_array)
+    
+    # testing to make sure that the arrays are properly printing
+    # print(first_character_array)
+    # print(second_character_array)
+    # print(third_character_array)
+    # print(forth_character_array)
+    # print(fifth_character_array)
+    # print(sixth_character_array)
 
     # adding up the top 3 dice in a roll and storing it into a variable
     first_character_sum = first_character_array[0]+first_character_array[1]+first_character_array[2]
@@ -87,23 +103,23 @@ def dice_array_builder(num_dice):
     fifth_character_sum = fifth_character_array[0]+fifth_character_array[1]+fifth_character_array[2]
     sixth_character_sum = sixth_character_array[0]+sixth_character_array[1]+sixth_character_array[2]
 
-    #printing to make sure that I have the right number of variable names
-    print(first_character_sum)
-    print(second_character_sum)
-    print(third_character_sum)
-    print(forth_character_sum)
-    print(fifth_character_sum)
-    print(sixth_character_sum)
+    #building an array from the sums
+    sum_array = []
+    sum_array.append(first_character_sum)
+    sum_array.append(second_character_sum)
+    sum_array.append(third_character_sum)
+    sum_array.append(forth_character_sum)
+    sum_array.append(fifth_character_sum)
+    sum_array.append(sixth_character_sum)
+    print ("Here is an array sum: ", sum_array)
 
-dice_array_builder(num_dice)
+    def strength_updater (sum_array):
+        #will need to prevent someone from using the same thing more than once.    
+        temp_strength = int(input("Which value would you like to use for your strength stat?"))
+        if temp_strength in sum_array:
+            # add the strength value to the character (will need to look up the character first)
 
+        else: 
+            #print "that number doesn't exist, please try again"
 
-class Character:
-    def __init__(strength, dexterity, constitution, intellect, wisdom, charisma):
-        self.strength = strength
-        self.dexterity = dexterity
-        self.constitution = constitution
-        self.intellect = intellect
-        self.wisdom = wisdom
-        self.charisma = charisma
-
+    character_builder(num_dice)

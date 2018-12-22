@@ -1,0 +1,11 @@
+Things to learn -- The purpose of this doc is to list things that 
+I'm going to need to learn about before I'm able to build/design this program like I want to
+
+------------------------------------------------------------------------
+
+- How to connect a database/which databases to use for the characters/NPCs?
+
+
+Questions:
+- Should I use multiple .py docs/split up the class builder functions from the core? 
+    What is the best practice?
