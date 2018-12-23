@@ -1,0 +1,4 @@
+ISSUES
+
+-- If I enter a string when the program is expecting an int, I get an invalid literal for int() with base 10
+    -- learn about try: https://docs.python.org/3/tutorial/errors.html

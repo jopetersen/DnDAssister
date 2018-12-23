@@ -1,8 +1,19 @@
 To-Dos:
-- Use classes to store new character information
+
 - Create a simple graphical user interface that has a button that's used to "generate a character with random stats"
     - Determine optimal stat configuration for each class
         -- Make a dropdown in the GUI to select a character class, store that value & auto assign optimal values
             -- OR display the sum_dices & allow the user to allocate their stats as they wish 
         -- Would need to add a character name, check to see how forbidden characters (e.g. spaces) work or are handled
-- create a database for potential characters
+- Create a database for potential characters
+- Figure out how to remove values from an array for the strength updater
+    - Maybe abstract the function so that I don't have to keep copy/pasting it to update? 
+        Not sure how this would work with multiple stats though. 
+
+
+COMPLETED ---------------------------------------------------------------------------
+- Use classes to store new character information (done 12/23)
+
+
+
+
