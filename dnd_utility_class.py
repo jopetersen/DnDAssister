@@ -1,4 +1,4 @@
-# the purpose of this separate doc is to introduce classes to the initial utility for the popular
+# the purpose of this doc is to build a class/act as a utility for the popular
 # fantasy tabletop RPG, Dungeons & Dragons (5th Edition)
 
 import random
@@ -50,21 +50,13 @@ def character_builder(num_dice, character):
     forth_character_sum=0
     fifth_character_sum = 0
     sixth_character_sum = 0
-    # while dice_counter > 0:
-    #     random.seed()
-    #     character_dice_array.append(math.trunc(random.random()*10))
-    #     while dice_counter >=20:
-    #         first_character_array=first_character_array.append((math.trunc(random.random()*10)))
-    #     dice_counter=dice_counter-1
-    # create new arrays from the character_dice_array
+    
     while dice_counter > 20: 
         random.seed()
         first_character_array.append((math.trunc(random.random()*10)))
         dice_counter=dice_counter-1
         #sorting the array from highest to lowest
         first_character_array.sort(reverse=True)
-        # determine which 3 indexes in an array are the largest, then add them
-    # first_character_sum=first_character_array[0]+first_character_array[1]+first_character_array[2]
     while dice_counter > 16: 
         random.seed()
         second_character_array.append((math.trunc(random.random()*10)))
@@ -119,9 +111,10 @@ def character_builder(num_dice, character):
 
     #need to manually assign all stats. Future - abstract the functions to make it a skill updater
     def stat_assigner (sum_array):
-
         #this array will help us keep track of which values have already been used
         stat_updater_array = sum_array
+
+        #this stat updater will update the strength of a character
         def strength_updater (sum_array):
             #will need to prevent someone from using the same thing more than once.    
             temp_strength = int(input("Which value would you like to use for your strength stat? "))
@@ -136,9 +129,6 @@ def character_builder(num_dice, character):
                 #print "that number doesn't exist, please try again"
                 print ("That number is not in the list that we gave you, please try again ")
                 strength_updater(sum_array)  
-        #exit condition 
-        # elif temp_strength == "exit": 
-        #     break
         
         def dexterity_updater (sum_array):
             #will need to prevent someone from using the same thing more than once.    
@@ -154,12 +144,82 @@ def character_builder(num_dice, character):
                 #print "that number doesn't exist, please try again"
                 print ("That number is not in the list that we gave you, please try again ")
                 dexterity_updater(sum_array)  
-        #exit condition 
-        # elif temp_strength == "exit": 
-        #     break
         
-    
-    # execute the strength_updater function
-    strength_updater(sum_array)
+        def constitution_updater (sum_array):
+            #will need to prevent someone from using the same thing more than once.    
+            temp_constitution = int(input("Which value would you like to use for your constitution stat? "))
+            if temp_constitution in sum_array:
+                # add the dexterity value to the character (will need to look up the character first)
+                character.constitution=temp_constitution
+                #abstracted to any character
+                print(character.constitution) 
+                #will also need to remove the number from the array
+            
+            elif temp_constitution not in sum_array:
+                #print "that number doesn't exist, please try again"
+                print ("That number is not in the list that we gave you, please try again ")
+                constitution_updater(sum_array)
 
+        def constitution_updater (sum_array):
+            #will need to prevent someone from using the same thing more than once.    
+            temp_constitution = int(input("Which value would you like to use for your constitution stat? "))
+            if temp_constitution in sum_array:
+                # add the dexterity value to the character (will need to look up the character first)
+                character.constitution=temp_constitution
+                #abstracted to any character
+                print(character.constitution) 
+                #will also need to remove the number from the array
+            
+            elif temp_constitution not in sum_array:
+                #print "that number doesn't exist, please try again"
+                print ("That number is not in the list that we gave you, please try again ")
+                constitution_updater(sum_array)
+        
+        def intellect_updater (sum_array):
+            #will need to prevent someone from using the same thing more than once.    
+            temp_intellect = int(input("Which value would you like to use for your intellect stat? "))
+            if temp_intellect in sum_array:
+                # add the dexterity value to the character (will need to look up the character first)
+                character.intellect=temp_intellect
+                #abstracted to any character
+                print(character.intellect) 
+                #will also need to remove the number from the array
+            
+            elif temp_intellect not in sum_array:
+                #print "that number doesn't exist, please try again"
+                print ("That number is not in the list that we gave you, please try again ")
+                intellect_updater(sum_array)
+    # execute the stats updater function
+        def wisdom_updater (sum_array):
+            #will need to prevent someone from using the same thing more than once.    
+            temp_wisdom = int(input("Which value would you like to use for your wisdom stat? "))
+            if temp_wisdom in sum_array:
+                # add the dexterity value to the character (will need to look up the character first)
+                character.wisdom=temp_wisdom
+                #abstracted to any character
+                print(character.wisdom) 
+                #will also need to remove the number from the array
+            
+            elif temp_wisdom not in sum_array:
+                #print "that number doesn't exist, please try again"
+                print ("That number is not in the list that we gave you, please try again ")
+                wisdom_updater(sum_array)
+
+        def charisma_updater (sum_array):
+            #will need to prevent someone from using the same thing more than once.    
+            temp_charisma = int(input("Which value would you like to use for your charisma stat? "))
+            if temp_charisma in sum_array:
+                # add the dexterity value to the character (will need to look up the character first)
+                character.charisma=temp_charisma
+                #abstracted to any character
+                print(character.charisma) 
+                #will also need to remove the number from the array
+            
+            elif temp_charisma not in sum_array:
+                #print "that number doesn't exist, please try again"
+                print ("That number is not in the list that we gave you, please try again ")
+                charisma_updater(sum_array)
+
+
+    stat_assigner (sum_array)
 character_builder(num_dice, character)
