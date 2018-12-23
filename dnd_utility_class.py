@@ -5,7 +5,7 @@ import random
 import math
 
 class Character:
-    def __init__(name, strength, dexterity, constitution, intellect, wisdom, charisma):
+    def __init__(self, name, strength, dexterity, constitution, intellect, wisdom, charisma):
         self.name = name
         self.strength = strength
         self.dexterity = dexterity
@@ -23,10 +23,14 @@ test_character = Character("test_name", 0, 0, 0, 0, 0, 0)
 num_dice= 4
 
 #initializing an empty character name, but is a global variable
-character = ""
+# character = test_character
 
+character = input("Which character would you like to use? ")
+
+#testing
+character = test_character
 def character_builder(num_dice, character):
-    character_name = str(input("What is your character's name? "))
+    # character_name = str(input("What is your character's name? "))
     # get a character's name
     character_dice_array = []
     dice_counter=num_dice*6
@@ -113,13 +117,49 @@ def character_builder(num_dice, character):
     sum_array.append(sixth_character_sum)
     print ("Here is an array sum: ", sum_array)
 
-    def strength_updater (sum_array):
-        #will need to prevent someone from using the same thing more than once.    
-        temp_strength = int(input("Which value would you like to use for your strength stat?"))
-        if temp_strength in sum_array:
-            # add the strength value to the character (will need to look up the character first)
+    #need to manually assign all stats. Future - abstract the functions to make it a skill updater
+    def stat_assigner (sum_array):
 
-        else: 
-            #print "that number doesn't exist, please try again"
+        #this array will help us keep track of which values have already been used
+        stat_updater_array = sum_array
+        def strength_updater (sum_array):
+            #will need to prevent someone from using the same thing more than once.    
+            temp_strength = int(input("Which value would you like to use for your strength stat? "))
+            if temp_strength in sum_array:
+                # add the strength value to the character (will need to look up the character first)
+                character.strength=temp_strength
+                #abstracted to any character
+                print(character.strength) 
+                #will also need to remove the number from the array
+            
+            elif temp_strength not in sum_array:
+                #print "that number doesn't exist, please try again"
+                print ("That number is not in the list that we gave you, please try again ")
+                strength_updater(sum_array)  
+        #exit condition 
+        # elif temp_strength == "exit": 
+        #     break
+        
+        def dexterity_updater (sum_array):
+            #will need to prevent someone from using the same thing more than once.    
+            temp_dexterity = int(input("Which value would you like to use for your dexterity stat? "))
+            if temp_dexterity in sum_array:
+                # add the dexterity value to the character (will need to look up the character first)
+                character.dexterity=temp_dexterity
+                #abstracted to any character
+                print(character.dexterity) 
+                #will also need to remove the number from the array
+            
+            elif temp_dexterity not in sum_array:
+                #print "that number doesn't exist, please try again"
+                print ("That number is not in the list that we gave you, please try again ")
+                dexterity_updater(sum_array)  
+        #exit condition 
+        # elif temp_strength == "exit": 
+        #     break
+        
+    
+    # execute the strength_updater function
+    strength_updater(sum_array)
 
-    character_builder(num_dice)
+character_builder(num_dice, character)
